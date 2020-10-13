@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="col-md-12">
+    <div id="modal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal header -->
+          <div class="modal-header">
+            <h3>How to transcribe the 2014 Referendum Leaflets</h3>
+          </div>
+
+          <!-- Step 1 of the tutorial -->
+          <div id="0" class="modal-body" style="display:none">
+            <img src="http://www.scottishpoliticalarchive.org.uk/wp-content/uploads/2017/02/spalogocmykpaths-290x300.png" width="145" height="150" hspace=""/>
+            <img src="https://www.stir.ac.uk/webcomponents/dist/css/images/logos/logo.svg" width="200" height="150"/>
+              <p style="text-align: justify;">
+                  This is a very simple application for the crowd-sourcing of leaflets produced by the 'YES' and 'NO' groups as part of the 2014 Scottish Referendum campaign.
+                  This project is on behalf of the Scottish Political Archive, housed at the University of Stirling.
+                </p>
+              <p style="text-align: justify;">
+                  Please help us by transcribing the content of each leaflet as you read it. Please write the text under 'The body of the leaflet'.
+                  <p>
+              <img src="https://blog.micropasts.org/wp-content/uploads/2020/04/Tutorial_Screen1-e1588245469459.jpg" />
+                </p>
+            </div>
+
+            <!-- Step 2 of the tutorial -->
+            <div id="1" class="modal-body" style="display:none">
+              <p style="text-align: justify;">
+                Please also indicate whether there are any graphic elements present in the leaflet. Please note down these elements under 'The presence of graphic elements'.
+                <p>
+              <img src="https://blog.micropasts.org/wp-content/uploads/2020/04/Tutorial_Screen2-e1588245704465.jpg" />
+              </p>
+            </div>
+
+            <!-- Step 3 of the tutorial -->
+            <div id="2" class="modal-body" style="display:none">
+              <p style="text-align: justify;">
+                If you have any comments on the work you have done or any doubts, please write them down under 'Comments'.
+                 <p>
+              <img src="https://blog.micropasts.org/wp-content/uploads/2020/04/Tutorial_Screen3-e1588246073365.jpg" />
+              </p>
+              <p style="text-align: justify;">
+                Finally, remember you can seek help and answers by posting questions on the Micropasts community forum.
+              </p>
+              <p>
+                Enjoy!
+              </p>
+            </div>
+            <!-- End of stepped modal body -->
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <a id="prevBtn" href="#" onclick="showStep('prev')" class="btn btn-default">Previous</a>
+              <a id="nextBtn" href="#" onclick="showStep('next')" class="btn btn-success">Next</a>
+              <a id="startContrib" data-dismiss="modal" href="../hayleysletters/newtask" class="btn btn-primary"
+              style="display:none"/><i class="glyphicon glyphicon-thumbs-up"></i> Let's start!</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var step = -1;
+    function showStep(action) {
+      $("#" + step).hide();
+      if (action == 'next') {
+        step = step + 1;
+      }
+      if (action == 'prev') {
+        step = step - 1;
+      }
+      if (step == 0) {
+        $("#prevBtn").hide();
+      }
+      else {
+        $("#prevBtn").show();
+      }
+      if (step == 2 ) {
+        $("#nextBtn").hide();
+        $("#startContrib").show();
+      }
+      $("#" + step).show();
+    }
+    showStep('next');
+    $("#modal").modal('show');
+  </script>

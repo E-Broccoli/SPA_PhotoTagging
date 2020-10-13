@@ -1,0 +1,357 @@
+<!-- Add scripts etc -->
+<script src="/static/js/vendor/jquery.serializeJSON.min.js" type="text/javascript"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.0/jquery.cookie.min.js" type="text/javascript"></script>
+<script src="/static/vendor/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+<!-- Add style sheets -->
+<link rel="stylesheet" href="/static/vendor/fancybox/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen"/>
+
+<!-- Browser not compatible message -->
+<div style="display:none;margin-top:15px; height:500px;" id="oldbrowser" class="row">
+  <!-- Success and Error Messages for the user -->
+  <div class="col-md-8 col-md-offset-1 alert alert-info">
+    <strong>Sorry, but your browser does not support the current application. If you want to contribute, please,
+      upgrade to a modern web browser like the open source and free alternative <a
+      href="http://www.mozilla.org/en-US/firefox/new/">Firefox</a> or <a
+      href="https://www.google.com/intl/en/chrome/browser/">Chrome</a></strong>.
+    </div>
+  </div>
+  <!-- End of Row -->
+  <!-- end of browser -->
+
+  <!-- Start of messages -->
+  <div style="margin-top:15px;">
+    <div id="success" class="alert alert-success" style="display:none;">
+      <strong>Well done!</strong> <br />
+      You have successfully submitted your contribution.
+      Here is another to try if you wish.
+    </div>
+    <div id="loading" class="alert alert-info" style="display:none;">
+      <img src="/static/img/loading.gif">Loading next task...
+    </div>
+    <div id="taskcompleted" class="alert alert-info" style="display:none;">
+      <strong>The task has been completed!</strong> Thank you for helping us.
+    </div>
+    <div id="finish" class="alert alert-success" style="display:none;">
+      <h2>Congratulations!</h2>
+      <p>
+        You have participated in all available tasks in our project.
+      </p>
+      <div class="alert-actions">
+        <a class="btn-default btn" href="/">Go back to the home page</a>
+        <a class="btn-default btn" href="/app">or, have a look at our
+          other applications</a>
+        </div>
+      </div>
+      <div id="error" class="alert alert-danger" style="display:none;">
+        <a class="close">×</a>
+        <strong>Error!</strong> <br />
+        Something went wrong, please contact the site administrators
+      </div>
+    </div>
+    <!-- End Success and Error Messages for the user -->
+
+    <!--
+    Task DOM for loading the S3 Images
+    It uses the class="skeleton" to identify the elements that belong to the
+    task.
+  -->
+
+  <div class="row skeleton" id="">
+
+    <div class="col-md-12">
+      <div class="row">
+        <div class="btn-group">
+          <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">
+            <i class="glyphicon glyphicon-eye-open"></i> Tutorial
+          </button>
+          <a class="btn btn-info btn-xs" id="imgLink" target="_blank" data-toggle="tooltip" data-placement="top"
+          title="Opens in a new window" href="http://community.micropasts.org/"><i
+          class="glyphicon glyphicon-book"></i> Community Help</a>
+          <!-- Overlay image -->
+          <a id="raw" href="" class="btn btn-xs btn-info fancybox"><i class="glyphicon glyphicon-picture"></i>
+            Overlay</a>
+            <!-- Link to flickr -->
+            <a id="flickr" rel="tooltip" target="_blank" data-toggle="tooltip" data-placement="top"
+            title="Opens in a new window" href="" class="btn btn-xs btn-info"><i class="icon icon-flickr"></i>
+            View on Flickr</a>
+            <a id="toggle" class="btn btn-xs btn-info"><i class="glyphicon glyphicon-repeat"></i> Rotate image</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- The pdf section -->
+      <div class="col-md-12">
+        <div class="row">
+          <h4>Please help us tag this photograph selecting any of the following tags that are applicable first.</h4>
+          <h2>If there are any signs on the photograph please transcribe their content in the Comments box</h2>
+        </div>
+      </div>
+
+      <h3><b>People, Places and Objects</b></h3>
+      <div id="peopleplace">
+      <button class="btn btn-sm btn-default btn-tag peopleplace" value="historicalfigure">Historical Figure</button>
+      <button class="btn btn-sm btn-default btn-tag peopleplace" value="politician">Politician</button>
+      <button class="btn btn-sm btn-default btn-tag peopleplace" value="demonstration">Demonstration</button>
+      <button class="btn btn-sm btn-default btn-tag peopleplace" value="historicalplace">Historical Place</button>
+      <button class="btn btn-sm btn-default btn-tag peopleplace" value="battlefield">Battlefield</button>
+      <button class="btn btn-sm btn-default btn-tag peopleplace" value="naturallandscape">Natural Landscape</button>
+      <button class="btn btn-sm btn-default btn-tag peopleplace" value="statueormonument">Statue or Monument</button>
+      <button class="btn btn-sm btn-default btn-tag peopleplace" value="historicalbuilding">Historical Building</button>
+      <button class="btn btn-sm btn-default btn-tag peopleplace" value="sign">Sign</button>
+      <button class="btn btn-sm btn-default btn-tag peopleplace" value="symbol">Symbol</button>
+      <button class="btn btn-sm btn-default btn-tag peopleplace" value="flag">Flag</button>
+
+      <h3><b>Your own tags. Please add them separated by a comma</b></h3>
+          <input id="tags" type="text" name="tags">
+          <div id="custom" style="margin-top:5px;">
+          </div>
+
+              <div class="form-group">
+                <label class="control-label" for="comments">Comments</label>
+                <textarea class="form-control" rows="5" id="comments" name="comments"
+                placeholder="Add any comments you have"></textarea>
+              </div>
+
+              <button class="btn btn-success btn-answer" value='Yes'>
+                Submit your tags
+              </button>
+            </div>
+
+
+          <div id="imgContainer" class="col-md-6">
+            <span id="postcardImage">
+              <img id="photo" src="/static/img/loading.gif" class="loadingIcon" style="max-width:100%;">
+            </span>
+          </div>
+
+
+        </div>
+
+      <!-- End of pdf section -->
+      <!-- The data entry section using html table -->
+      <div class="row">
+
+        <!-- Feedback items for the user -->
+        <p>
+          You are working now on task: <span id="task-id" class="label label-warning">#</span>
+        </p>
+        <p>
+          You have completed: <span id="done" class="label label-info"></span> tasks from
+          <!-- Progress bar for the user -->
+          <span id="total" class="label label-inverse"></span>
+        </p>
+        <div class="progress progress-striped">
+          <div id="progress" rel="tooltip" title="#" class="progress-bar" role="progressbar" style="width: 0%;"></div>
+        </div>
+        <!-- End of feedback row -->
+      </div>
+      <!-- End of the section -->
+    </div>
+    <!-- End of DOM Skeleton row -->
+
+    <!-- Modal start -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal header -->
+          <div class="modal-header">
+            <h3>Photo-tagging Tutorial</h3>
+          </div>
+
+          <!-- Step 1 of the tutorial -->
+          <div id="0" class="modal-body" style="display:none">
+            <img src="http://www.scottishpoliticalarchive.org.uk/wp-content/uploads/2017/02/spalogocmykpaths-290x300.png" width="145" height="150" hspace=""/>
+            <img src="https://www.stir.ac.uk/webcomponents/dist/css/images/logos/logo.svg" width="200" height="150"/>
+              <p style="text-align: justify;">
+                    The application is really simple. It loads a photo from our Flickr feed and asks you to <strong> tag all the elements that you recognise </strong>. These can be anything from a <i>statue</i> to a <i>building</i>, an activity taking place such as <i>demonstration</i> or <i>speech</i> or even specific individuals, and/or more general themes such as simply <i>architecture</i>.
+                </p>
+              <p style="text-align: justify;">
+                As you can see, you have some buttons representing a category of suggested tags: People, Places and Objects. Please refer to this list first when tagging each photo.
+              <img src="https://blog.micropasts.org/wp-content/uploads/2020/04/Tutorial_Screen1-e1588245469459.jpg" />
+                </p>
+            </div>
+
+            <!-- Step 2 of the tutorial -->
+            <div id="1" class="modal-body" style="display:none">
+              <p style="text-align: justify;">
+                Then you can add your own tags. Both annotating elements on the photograph and selecting tags from these lists are very helpful.
+                <p>
+              <img src="https://blog.micropasts.org/wp-content/uploads/2020/04/Tutorial_Screen2-e1588245704465.jpg" />
+              </p>
+            </div>
+
+            <!-- Step 3 of the tutorial -->
+            <div id="2" class="modal-body" style="display:none">
+              <p style="text-align: justify;">
+                Please use the Comment Box to transcribe the text of the signs visible on the photo, separated by a comma, or to write any comments on the work you have done or any doubts.
+                 <p>
+              <img src="https://blog.micropasts.org/wp-content/uploads/2020/04/Tutorial_Screen3-e1588246073365.jpg" />
+              </p>
+              <p style="text-align: justify;">
+                Finally, remember you can seek help and answers by posting questions on the Micropasts community forum.
+              </p>
+              <p>
+                Enjoy!
+              </p>
+            </div>
+              <!-- End of stepped modal body -->
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <a id="prevBtn" href="#" onclick="showStep('prev')" class="btn btn-default">Previous</a>
+              <a id="nextBtn" href="#" onclick="showStep('next')" class="btn btn-success">Next</a>
+              <button id="closeBtn" data-dismiss="modal" onclick="showStep('finish')" class="btn btn-primary"
+              style="display:none"><i class="glyphicon glyphicon-thumbs-up"></i> Back to task
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Client side scripts -->
+    <script>
+      // Quick fix for IE8
+      Modernizr.load({
+        test : window.JSON,
+        nope : '/static/js/vendor/json2.min.js'
+      });
+
+
+
+
+    </script>
+
+    <!-- Step through modals -->
+    <script type="text/javascript">
+      var step = -1;
+      function showStep(action) {
+        $("#" + step).hide();
+        if (action == 'next') {
+          step = step + 1;
+        }
+        if (action == 'prev') {
+          step = step - 1;
+        }
+        if (step == 0) {
+          $("#prevBtn").hide();
+        } else {
+          $("#prevBtn").show();
+        }
+
+        // this line below needs to match the id of the last modal div. If you have 4 divs, you need to
+        // change this to step = 3 and if you have 2 you would say step = 1. Id starts at 0.
+
+        if (step == 2) {
+          $("#nextBtn").hide();
+          $("#closeBtn").show();
+        }
+        if (action == 'finish') {
+          step = 0;
+          $("#closeBtn").hide();
+          $("#prevBtn").hide();
+          $("#nextBtn").show();
+        }
+        $("#" + step).show();
+      }
+      showStep('next');
+      $("#modal").modal('show');
+
+
+
+
+    </script>
+
+    <!-- Load user progress -->
+    <script>
+
+      // This part of the script loads the user's progress through the project
+
+      function loadUserProgress() {
+        pybossa.userProgress('leaflets2014').done(function(data) {
+          console.log(data);
+          console.log("Total answers done for user: " + data.done);
+          var pct = Math.round((data.done * 100) / data.total);
+          $("#progress").css("width", pct.toString() + "%");
+          $("#progress").attr("title", pct.toString() + "% completed!");
+          $("#progress").tooltip({ 'placement' : 'left' });
+          $("#total").text(data.total);
+          $("#done").text(data.done);
+          $('a[rel]').tooltip({'placement' : 'left'});
+        });
+      }
+
+      //This part loads the script
+
+      pybossa.taskLoaded(function(task, deferred) {
+        if (! $.isEmptyObject(task)) {
+          loadUserProgress();
+          deferred.resolve(task);
+        } else {
+          deferred.resolve(task);
+        }
+      });
+
+      // This part presents the task and then saves the answers
+
+      pybossa.presentTask(function(task, deferred) {
+        if (!$.isEmptyObject(task)) {
+          console.log(task)
+          $("#question").html(task.info.question);
+          $('#task-id').html(task.id);
+          $("#photo").attr('src', task.info.url_b);
+          $("a#raw").attr("href", task.info.url_b);
+          $(".fancybox").fancybox();
+          $( "#toggle" ).click( function() {
+            $("#photo").toggleClass('flip');
+          });
+          $('.btn-answer').off('click').on('click', function(evt) {
+                        var answer = $(evt.target).attr("value");
+                        if (typeof answer != 'undefined') {
+                            console.log(answer);
+                        task.answer.peopleplace = $('#people').val();
+                                }
+                            };
+
+          $("a#flickr").attr("href", task.info.link + '/sizes/k/');
+          var data = [[]];
+          $('.btn-answer').off('click').on('click', function(evt) {
+            evt.preventDefault();
+            var answer = $(evt.target).attr("value");
+            if ( typeof answer != 'undefined') {
+              task.answer = $("#magicData").serializeJSON();
+              console.log(task.answer);
+              pybossa.saveTask(task.id, task.answer).done(function() {
+                $("html, body").animate( {scrollTop : 0 }, "slow");
+                $("#success").fadeIn(500).fadeOut(500);
+                $("#loading").fadeIn(500).fadeOut(500);
+                $('#magicData')[0].reset();
+                deferred.resolve();
+              });
+            } else {
+              $("#error").show();
+            }
+          });
+          $("#loading").hide();
+        } else {
+          $(".skeleton").hide();
+          $("#loading").hide();
+          $("#finish").fadeIn(500);
+        }
+      });
+      pybossa.run('SpaPhotoTagging');
+
+    </script>
+
+    <style type="text/css">
+      .btn-answer {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .btn-group {
+        margin-bottom: 0px
+      }
+
+      .flip { transform: rotate(-90deg);}
+
+    </style>
