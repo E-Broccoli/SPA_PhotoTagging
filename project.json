@@ -1,6 +1,6 @@
 {
-    "name": "Transcription of Scottish Political Archive leaflets - 2014 Referendum Collection",
-    "short_name": "leaflets2014",
-    "description": "Transcription of 2014 Referendum leaflets",
-    "question": "Help the Scottish Political Archive transcribe their archive of 2014 Referendum leaflets."
+    "name": "Photo-tagging of Scottish Political Archive 2014 Referendum Collection",
+    "short_name": "SpaPhotoTagging",
+    "description": "PhotoTagging of 2014 Referendum Photographs Collection",
+    "question": "Tag the photographs"
 }
