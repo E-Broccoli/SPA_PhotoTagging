@@ -1,88 +1,76 @@
 <div class="row">
-  <div class="col-md-12">
-    <div id="modal" class="modal fade">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <!-- Modal header -->
-          <div class="modal-header">
-            <h3>How to transcribe the 2014 Referendum Leaflets</h3>
-          </div>
+    <div class="col-md-12">
+        <div id="modal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal header -->
+                    <div class="modal-header">
+                <h3>How to 'tag' photographs of the Scottish Political Archive</h3>
+            </div>
 
-          <!-- Step 1 of the tutorial -->
-          <div id="0" class="modal-body" style="display:none">
-            <img src="http://www.scottishpoliticalarchive.org.uk/wp-content/uploads/2017/02/spalogocmykpaths-290x300.png" width="145" height="150" hspace=""/>
-            <img src="https://www.stir.ac.uk/webcomponents/dist/css/images/logos/logo.svg" width="200" height="150"/>
-              <p style="text-align: justify;">
-                  This is a very simple application for the crowd-sourcing of leaflets produced by the 'YES' and 'NO' groups as part of the 2014 Scottish Referendum campaign.
-                  This project is on behalf of the Scottish Political Archive, housed at the University of Stirling.
+            <!-- Step 1 of the tutorial -->
+            <div id="0" class="modal-body" style="display:none">
+                <p>
+                    Tagging the 2014 Refrendum photographs is pretty straightforward.
                 </p>
-              <p style="text-align: justify;">
-                  Please help us by transcribing the content of each leaflet as you read it. Please write the text under 'The body of the leaflet'.
-                  <p>
-              <img src="https://blog.micropasts.org/wp-content/uploads/2020/04/Tutorial_Screen1-e1588245469459.jpg" />
+                <p>
+                    All we want you to do is to look at the picture you are presented with and <strong>tag all the elements that you recognise</strong>.
                 </p>
+
             </div>
 
             <!-- Step 2 of the tutorial -->
             <div id="1" class="modal-body" style="display:none">
-              <p style="text-align: justify;">
-                Please also indicate whether there are any graphic elements present in the leaflet. Please note down these elements under 'The presence of graphic elements'.
                 <p>
-              <img src="https://blog.micropasts.org/wp-content/uploads/2020/04/Tutorial_Screen2-e1588245704465.jpg" />
+                    Try to use the tags that are provided first. Then, please add your own tags too. These can be anything from a <i>statue</i> to a <i>building</i>, an activity taking place such as <i>demonstration</i> or <i>speech</i> or even specific individuals, and/or more general themes such as simply <i>architecture</i>.
+				       </p>
+                <p>
+                    If you recognise a specific person in the photo, this is great! Please tag their names in this way: <i>Last name, first name</i>; for example: Wallace, William.
+                    Please use the Comment Box to transcribe the content of any signs.
               </p>
-            </div>
+                <p>
 
-            <!-- Step 3 of the tutorial -->
-            <div id="2" class="modal-body" style="display:none">
-              <p style="text-align: justify;">
-                If you have any comments on the work you have done or any doubts, please write them down under 'Comments'.
-                 <p>
-              <img src="https://blog.micropasts.org/wp-content/uploads/2020/04/Tutorial_Screen3-e1588246073365.jpg" />
-              </p>
-              <p style="text-align: justify;">
-                Finally, remember you can seek help and answers by posting questions on the Micropasts community forum.
-              </p>
-              <p>
-                Enjoy!
-              </p>
+                    If you are not sure about your work or you want to let us know the reasons for some of your choices, you can do so using the comment box. You can also ask us direct questions via the <a href="http://community.micropasts.org">community forum</a>.
+                    Thank you for participating!
+                </p>
             </div>
-            <!-- End of stepped modal body -->
+                    <!-- End of stepped modal body -->
 
-            <!-- Modal footer -->
-            <div class="modal-footer">
-              <a id="prevBtn" href="#" onclick="showStep('prev')" class="btn btn-default">Previous</a>
-              <a id="nextBtn" href="#" onclick="showStep('next')" class="btn btn-success">Next</a>
-              <a id="startContrib" data-dismiss="modal" href="../hayleysletters/newtask" class="btn btn-primary"
-              style="display:none"/><i class="glyphicon glyphicon-thumbs-up"></i> Let's start!</a>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <a id="prevBtn" href="#" onclick="showStep('prev')" class="btn btn-default">Previous</a>
+                        <a id="nextBtn" href="#" onclick="showStep('next')" class="btn btn-success">Next</a>
+                        <a id="startContrib" data-dismiss="modal" href="../middleEastPostcards/newtask" class="btn btn-primary"
+                           style="display:none"/><i class="glyphicon glyphicon-thumbs-up"></i> Let's start!</a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 
-  <script type="text/javascript">
+<script type="text/javascript">
     var step = -1;
     function showStep(action) {
-      $("#" + step).hide();
-      if (action == 'next') {
-        step = step + 1;
-      }
-      if (action == 'prev') {
-        step = step - 1;
-      }
-      if (step == 0) {
-        $("#prevBtn").hide();
-      }
-      else {
-        $("#prevBtn").show();
-      }
-      if (step == 2 ) {
-        $("#nextBtn").hide();
-        $("#startContrib").show();
-      }
-      $("#" + step).show();
+        $("#" + step).hide();
+        if (action == 'next') {
+            step = step + 1;
+        }
+        if (action == 'prev') {
+            step = step - 1;
+        }
+        if (step == 0) {
+            $("#prevBtn").hide();
+        }
+        else {
+            $("#prevBtn").show();
+        }
+        if (step == 1 ) {
+            $("#nextBtn").hide();
+            $("#startContrib").show();
+        }
+        $("#" + step).show();
     }
     showStep('next');
     $("#modal").modal('show');
-  </script>
+</script>

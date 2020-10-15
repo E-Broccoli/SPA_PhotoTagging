@@ -1,18 +1,13 @@
 This application will help the Scottish Political Archive staff of the University of Stirling, to get more information on some campaign photographs from the Yes and No groups from the 2014 Referendum collection.
 
-          The Scottish Political Archive (SPA) was launched in October 2010 and is housed at the University of Stirling.
-          The SPA aims to collect political material and archives from Scottish politicians and political organisations
-          to chronicle the political history of Scotland in the twentieth and twenty first centuries.
+The Scottish Political Archive (SPA) was launched in October 2010 and is housed at the University of Stirling.
+The SPA aims to collect political material and archives from Scottish politicians and political organisations to chronicle the political history of Scotland in the twentieth and twenty first centuries.
 
-          Enhancing this important photographic archive will facilitate the searching of specific themes such as people,
-          places, objects, etc.
+Enhancing this important photographic archive will facilitate the searching of specific themes such as people, places, objects, etc.
 
-          This application loads a picture from the 2014 Referendum Collection
-          of the Scottish Political Archive and asks people to tag identified people, places and objects. Try to use the tags provided first and then,
-          if you think that other words would also be useful to describe what you see, please add your own tags too.
-          You can click on the picture and drag to draw a rectangle on top of the
-          element. This action will open a window where you will be able to type the name of that element and save it.
-          If in the picture there are some signs please transcribe their content in the Comments box.
+This application loads a picture from the 2014 Referendum Collection of the Scottish Political Archive and asks people to tag identified people, places and objects. Try to use the tags provided first and then, if you think that other words would also be useful to describe what you see, please add your own tags too.
+
+If in the picture there are some signs please transcribe their content in the Comments box.
 
 ## This project is on behalf of:
 
