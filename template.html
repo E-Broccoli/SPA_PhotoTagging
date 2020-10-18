@@ -4,12 +4,28 @@
         text-transform: capitalize;
     }
 
-    .btn-tag.peopleplace {
+    .btn-tag.people {
+      background-color: rgba(255, 97, 56, 0.5);
+    }
+
+    .btn-tag.people.active {
+      background-color: rgba(255, 97, 56, 0.9); font-weight: bold;
+    }
+
+    .btn-tag.places {
       background-color: rgba(255, 255, 157, 0.5);
     }
 
-    .btn-tag.peopleplace.active {
+    .btn-tag.places.active {
       background-color: rgba(255, 255, 157, 1); font-weight: bold;
+    }
+
+    .btn-tag.objects {
+      background-color: rgba(190, 235, 159, 0.5);
+    }
+
+    .btn-tag.objects.active {
+      background-color: rgba(190, 235, 159, 1); font-weight: bold;
     }
 
     .btn-tag.custom {
@@ -35,24 +51,34 @@
 -->
 <div class="row skeleton"> <!-- Start Skeleton Row-->
   <div class="col-md-6 "><!-- Start of Question and Submission DIV (column) -->
-      <h2><b>Select any of the following tags that are applicable first</b></h2>
-        <h3><b>People, Places and Objects</b></h3>
-        <div id="peopleplace">
-        <button class="btn btn-sm btn-default btn-tag peopleplace" value="historicalfigure">Historical Figure</button>
-        <button class="btn btn-sm btn-default btn-tag peopleplace" value="politician">Politician</button>
-        <button class="btn btn-sm btn-default btn-tag peopleplace" value="demonstration">Demonstration</button>
-        <button class="btn btn-sm btn-default btn-tag peopleplace" value="historicalplace">Historical Place</button>
-        <button class="btn btn-sm btn-default btn-tag peopleplace" value="battlefield">Battlefield</button>
-        <button class="btn btn-sm btn-default btn-tag peopleplace" value="naturallandscape">Natural Landscape</button>
-        <button class="btn btn-sm btn-default btn-tag peopleplace" value="statueormonument">Statue or Monument</button>
-        <button class="btn btn-sm btn-default btn-tag peopleplace" value="historicalbuilding">Historical Building</button>
-        <button class="btn btn-sm btn-default btn-tag peopleplace" value="sign">Sign</button>
-        <button class="btn btn-sm btn-default btn-tag peopleplace" value="symbol">Symbol</button>
-        <button class="btn btn-sm btn-default btn-tag peopleplace" value="flag">Flag</button>
+      <h2><b>Select any of the following tags that are applicable</b></h2>
+        <h3><b>People</b></h3>
+        <div id="people">
+        <button class="btn btn-sm btn-default btn-tag people" value="politician">Politician</button>
+        <button class="btn btn-sm btn-default btn-tag people" value="campaigner">Campaigner</button>
+        <button class="btn btn-sm btn-default btn-tag people" value="demonstration">Demonstration</button>
+        <button class="btn btn-sm btn-default btn-tag people" value="historicalfigure">Historical Figure (before 1950)</button>
 
       </div>
 
-      <h3><b>Your own tags. Please add them separated by a comma</b></h3>
+      <h3><b>Places</b></h3>
+      <div id="places">
+      <button class="btn btn-sm btn-default btn-tag places" value="heritagesite">Heritage Site</button>
+      <button class="btn btn-sm btn-default btn-tag places" value="urban">Urban</button>
+      <button class="btn btn-sm btn-default btn-tag places" value="rural">Rural</button>
+      <button class="btn btn-sm btn-default btn-tag places" value="maritime">Maritime</button>
+    </div>
+
+    <h3><b>Objects</b></h3>
+    <div id="objects">
+    <button class="btn btn-sm btn-default btn-tag objects" value="building">Building</button>
+    <button class="btn btn-sm btn-default btn-tag objects" value="statueormonument">Statue or Monument</button>
+    <button class="btn btn-sm btn-default btn-tag objects" value="sign">Sign</button>
+    <button class="btn btn-sm btn-default btn-tag objects" value="flag">Flag</button>
+    <button class="btn btn-sm btn-default btn-tag objects" value="symbol">Symbol</button>
+  </div>
+
+      <h3><b>Now you can add your own tags. Please add them separated by a comma</b></h3>
       <input id="tags" type="text" name="tags">
       <div id="custom" style="margin-top:5px;">
       </div>
@@ -110,12 +136,14 @@
             <!-- Step 2 of the tutorial -->
             <div id="1" class="modal-body" style="display:none">
                 <p>
-                    Try to use the tags that are provided first. Then, please add your own tags too. These can be anything from a <i>statue</i> to a <i>building</i>, an activity taking place such as <i>demonstration</i> or <i>speech</i> or even specific individuals, and/or more general themes such as simply <i>architecture</i>.
+                    Try to use the tags that are provided. Then, please add your own tags too. These can be anything from a <i>statue</i> to a <i>building</i>, an activity taking place such as <i>demonstration</i> or <i>speech</i> or even specific individuals.
 				       </p>
                 <p>
-                    If you recognise a specific person in the photo, this is great! Please tag their names in this way: <i>Last name, first name</i>; for example: Wallace, William.
-                    Please use the Comment Box to transcribe the content of any signs.
+                    If you recognise a specific person in the photo please tag in this way: <i>Last nameFirst name</i>; for example: WallaceWilliam.
               </p>
+              <p>
+                Please use the Comment Box to transcribe the content of any signs.
+             </p>
                 <p>
 
                     If you are not sure about your work or you want to let us know the reasons for some of your choices, you can do so using the comment box. You can also ask us direct questions via the <a href="http://community.micropasts.org">community forum</a>.
@@ -259,7 +287,9 @@ pybossa.taskLoaded(function(task, deferred) {
             deferred.resolve(task);
             pybossaNotify("", false, "loading");
         });
-        task.answer = {'peopleplace': [],
+        task.answer = {'people': [],
+        'places': [],
+        'objects': [],
         'custom': [],
         'comments': ''
     }
