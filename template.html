@@ -51,17 +51,15 @@
 -->
 <div class="row skeleton"> <!-- Start Skeleton Row-->
   <div class="col-md-6 "><!-- Start of Question and Submission DIV (column) -->
-      <h2><b>Select any of the following tags that are applicable</b></h2>
-        <h3><b>People</b></h3>
+      <h2><b>1.Select as many of the following tags as are applicable:</b></h2>
+        <h3>People</h3>
         <div id="people">
         <button class="btn btn-sm btn-default btn-tag people" value="politician">Politician</button>
         <button class="btn btn-sm btn-default btn-tag people" value="campaigner">Campaigner</button>
-        <button class="btn btn-sm btn-default btn-tag people" value="demonstration">Demonstration</button>
-        <button class="btn btn-sm btn-default btn-tag people" value="historicalfigure">Historical Figure (before 1950)</button>
-
+        <button class="btn btn-sm btn-default btn-tag people" value="historicalfigure">Representation of Historical Figure (before 1950)</button>
       </div>
 
-      <h3><b>Places</b></h3>
+      <h3>Places</h3>
       <div id="places">
       <button class="btn btn-sm btn-default btn-tag places" value="heritagesite">Heritage Site</button>
       <button class="btn btn-sm btn-default btn-tag places" value="urban">Urban</button>
@@ -69,22 +67,36 @@
       <button class="btn btn-sm btn-default btn-tag places" value="maritime">Maritime</button>
     </div>
 
-    <h3><b>Objects</b></h3>
+    <h3>Objects</h3>
     <div id="objects">
-    <button class="btn btn-sm btn-default btn-tag objects" value="building">Building</button>
+    <button class="btn btn-sm btn-default btn-tag objects" value="builtheritage">Built Heritage</button>
     <button class="btn btn-sm btn-default btn-tag objects" value="statueormonument">Statue or Monument</button>
     <button class="btn btn-sm btn-default btn-tag objects" value="sign">Sign</button>
     <button class="btn btn-sm btn-default btn-tag objects" value="flag">Flag</button>
-    <button class="btn btn-sm btn-default btn-tag objects" value="symbol">Symbol</button>
+    <button class="btn btn-sm btn-default btn-tag objects" value="politicalsymbol">Political Symbol</button>
   </div>
 
-      <h3><b>Now you can add your own tags. Please add them separated by a comma</b></h3>
+      <h3><b>2.Now you can add your own tags. Please write tags specifying the names of people, places and objects you identified in step 1. </b></h3>
       <input id="tags" type="text" name="tags">
       <div id="custom" style="margin-top:5px;">
       </div>
 
-      <h3>Use this box to transcribe the content of the signs in the photograph and for your Comments</h3>
+      <h3><b>3.Location and Date. Where/When the photo was taken. To find  this information, open the photo on Flickr in a new wondow/tab by right clicking on it.</b></h3>
+      <textarea id="locationdate" rows="1"></textarea>
+
+      <h3><b>4.Use this box to transcribe the content of the signs in the photograph and for your Comments.</b></h3>
       <textarea id="comments" rows="4"></textarea>
+
+      <!-- Feedback items for the user -->
+      <p><span id="i18n_working_task">You are working now on task:</span> <span id="task-id" class="label label-warning">#</span></p>
+      <p><span id="i18n_tasks_completed">You have completed:</span> <span id="done" class="label label-info"></span> <span id="i18n_tasks_from">tasks from</span>
+
+      <!-- Progress progress-bar for the user -->
+      <span id="total" class="label label-inverse"></span></p>
+      <div class="progress progress-striped">
+          <div id="progress" rel="tooltip" title="#" class="progress-bar" style="width: 0%;"></div>
+      </div>
+
 
     </div><!-- End of Question and Submission DIV (column) -->
 
@@ -95,18 +107,8 @@
       <button class="btn btn-success btn-lg btn-submit pull-left" style="display:none;">Submit</button>
       <a href="../tutorial" class="btn btn-primary pull-right" style="margin-bottom:10px;margin-left: 5px; ">Tutorial</a>
       <a href="http://community.micropasts.org" class="btn btn-info pull-right" style="margin-bottom:10px;margin-left: 5px; ">Community Help</a>
-
-    </div>
-
-        <!-- Feedback items for the user -->
-        <p><span id="i18n_working_task">You are working now on task:</span> <span id="task-id" class="label label-warning">#</span></p>
-        <p><span id="i18n_tasks_completed">You have completed:</span> <span id="done" class="label label-info"></span> <span id="i18n_tasks_from">tasks from</span>
-
-        <!-- Progress progress-bar for the user -->
-        <span id="total" class="label label-inverse"></span></p>
-        <div class="progress progress-striped">
-            <div id="progress" rel="tooltip" title="#" class="progress-bar" style="width: 0%;"></div>
         </div>
+
 
 
     <!-- End of Photo DIV (columnt) -->
@@ -119,7 +121,7 @@
                 <div class="modal-content">
                     <!-- Modal header -->
                     <div class="modal-header">
-                <h3>How to 'tag' photographs of the Scottish Political Archive</h3>
+                <h3><b>How to 'tag' photographs from the Scottish Political Archive</b></h3>
             </div>
 
             <!-- Step 1 of the tutorial -->
@@ -136,19 +138,55 @@
             <!-- Step 2 of the tutorial -->
             <div id="1" class="modal-body" style="display:none">
                 <p>
-                    Try to use the tags that are provided. Then, please add your own tags too. These can be anything from a <i>statue</i> to a <i>building</i>, an activity taking place such as <i>demonstration</i> or <i>speech</i> or even specific individuals.
+                    <b>1.</b> First, try to use the tags that are provided clicking on the buttons.
 				       </p>
-                <p>
-                    If you recognise a specific person in the photo please tag in this way: <i>Last nameFirst name</i>; for example: WallaceWilliam.
+               <p>
+                  <b>2.</b> Then add your own tags, to specify any names of people, places and objects you identified in step 1.
+                 </p>
+                 <p>
+                   For instance, if you have selected the button:
+                   </p>
+                   <p>
+                  - <i>Campaigner</i> or <i>Politician</i>, please specify if there is a <i>stall</i>, a <i>demonstration</i> or a <i>speech</i>;
+                  </p>
+          <p>
+                  - <i>Heritage site</i>, please tag the name and the type of the site;
+</p>
+                  <p>
+                  - <i>Built Heritage</i>, the name/s of the building/s;
+</p>
+                  <p>
+                  - <i>Statue or Monument</i>, specify what they represent;
+</p>
+                  <p>
+                  - <i>Flag</i>, add tags which can described the content of this element;
+</p>
+                  <p>
+                  - <i>Political Symbol</i>, you can specify whether it is a party logo, or an object from the past used as political symbol.
+</p>
+                  <p>
+                   If you recognise a specific person in the photo, such as a politician or the representation of a historical figure, please tag in this way: <i>Last nameFirst name</i>; for example: WallaceWilliam.
               </p>
-              <p>
-                Please use the Comment Box to transcribe the content of any signs.
-             </p>
-                <p>
+</div>
+<!-- Step 3 of the tutorial -->
+<div id="2" class="modal-body" style="display:none">
+    <p>
+        <b>3.</b> Open the photo on Flickr in a new window/tab by right clicking on the photograph, and write down where and when the photograph was taken in the Location and Date Box .
+    </p>
+</div>
 
-                    If you are not sure about your work or you want to let us know the reasons for some of your choices, you can do so using the comment box. You can also ask us direct questions via the <a href="http://community.micropasts.org">community forum</a>.
-                    Thank you for participating!
-                </p>
+<!-- Step 4 of the tutorial -->
+<div id="3" class="modal-body" style="display:none">
+    <p>
+        <b>4.</b> Please use the Comment Box to transcribe the content of any signs.
+    </p>
+    <p>
+
+        If you are not sure about your work or you want to let us know the reasons for some of your choices, you can do so using the comment box. You can also ask us direct questions via the <a href="http://community.micropasts.org">community forum</a>.
+        Thank you for participating!
+    </p>
+</div>
+
             </div>
                     <!-- End of stepped modal body -->
 
@@ -181,7 +219,7 @@
         else {
             $("#prevBtn").show();
         }
-        if (step == 1 ) {
+        if (step == 3 ) {
             $("#nextBtn").hide();
             $("#startContrib").show();
         }
@@ -190,6 +228,7 @@
     showStep('next');
     $("#modal").modal('show');
 </script>
+
 
 
 
@@ -291,6 +330,7 @@ pybossa.taskLoaded(function(task, deferred) {
         'places': [],
         'objects': [],
         'custom': [],
+        'locationdate': [],
         'comments': ''
     }
         img.attr('src', task.info.url_b).css('height', 460);
@@ -362,7 +402,6 @@ pybossa.presentTask(function(task, deferred) {
         $('#photo-link').html('').append(task.info.image);
         $("#photo-link").attr("href", task.info.link);
 
-
         var handleBtn = function(evt) {
             toggleBtn(this, task);
         }
@@ -393,8 +432,11 @@ pybossa.presentTask(function(task, deferred) {
     $("#tags").on("change paste keyup", _.debounce(lazyLoad, 1500));
     $("#comments").on("change paste keyup", function(){
         task.answer.comments = $(this).val();
-        //console.log(task.answer);
-    });
+          //console.log(task.answer);
+      });
+      $("#locationdate").on("change paste keyup", function(){
+          task.answer.locationdate = $(this).val();
+      });
 
     $('.btn.btn-submit').off('click').on('click', function(evt) {
             pybossa.saveTask(task.id, task.answer).done(function() {
